@@ -36,12 +36,7 @@ public class CoffeeMaker {
 	public boolean addRecipe(Recipe r) {
         boolean canAddRecipe = true;
             
-        //Check if the recipe already exists
-        for(int i = 0; i < NUM_RECIPES; i++) {
-            if(r.equals(recipeArray[i])) {
-                canAddRecipe = false;
-            }
-        }
+        canAddRecipe = forExistanceRecipe(r, canAddRecipe);
         
         //Check for an empty recipe, add recipe to first empty spot
         if(canAddRecipe) {
@@ -62,6 +57,16 @@ public class CoffeeMaker {
         }
         return canAddRecipe;
     }
+
+	private boolean forExistanceRecipe(Recipe r, boolean canAddRecipe) {
+		//Check if the recipe already exists
+        for(int i = 0; i < NUM_RECIPES; i++) {
+            if(r.equals(recipeArray[i])) {
+                canAddRecipe = false;
+            }
+        }
+		return canAddRecipe;
+	}
     
 	/**
 	 * Returns true if the recipe was deleted from the 
