@@ -23,6 +23,10 @@ public class CoffeeMakerTest {
 	private Inventory i;
 	private Recipe r1;
 	
+	private CoffeeMaker cm2;
+	private Inventory i2;
+	private Recipe r2;
+	
 	@Test
 	public void testCoffeeMaker_1()
 		throws Exception {
@@ -49,6 +53,16 @@ public class CoffeeMakerTest {
 		// add additional test code here
 		assertNotNull(result);
 	}
+	
+	@Test
+	public void testCoffeeMaker_3()
+		throws Exception {
+
+		CoffeeMaker result = new CoffeeMaker();
+
+		// add additional test code here
+		assertNotNull(result);
+	}
 
 	/**
 	 * Run the boolean addInventory(int,int,int,int) method test.
@@ -63,13 +77,17 @@ public class CoffeeMakerTest {
 		CoffeeMaker fixture = CoffeeMakerFactory.createCoffeeMaker();
 		int amtCoffee = 1;
 		int amtMilk = 1;
-		int amtSugar = 0;
-		int amtChocolate = -1;
-
-		boolean result = fixture.addInventory(amtCoffee, amtMilk, amtSugar, amtChocolate);
-
+		int amtSugar = 1;
+		int amtChocolate = 1;
+		fixture.addInventory(amtCoffee, amtMilk, amtSugar, amtChocolate);
+		//boolean result = fixture.addInventory(amtCoffee, amtMilk, amtSugar, amtChocolate);
+		Inventory inve = fixture.checkInventory() ;
 		// add additional test code here
-		assertEquals(false, result);
+		//assertEquals(false, result);
+		assertEquals(16, inve.getCoffee());
+		assertEquals(16, inve.getMilk());
+		assertEquals(16, inve.getSugar());
+		assertEquals(16, inve.getChocolate());
 	}
 
 	/**
@@ -85,7 +103,7 @@ public class CoffeeMakerTest {
 		CoffeeMaker fixture = CoffeeMakerFactory.createCoffeeMaker();
 		int amtCoffee = 1;
 		int amtMilk = 1;
-		int amtSugar = 0;
+		int amtSugar = 1;
 		int amtChocolate = 1;
 
 		boolean result = fixture.addInventory(amtCoffee, amtMilk, amtSugar, amtChocolate);
@@ -105,15 +123,15 @@ public class CoffeeMakerTest {
 	public void testAddInventory_3()
 		throws Exception {
 		CoffeeMaker fixture = CoffeeMakerFactory.createCoffeeMaker();
-		int amtCoffee = -1;
-		int amtMilk = 1;
-		int amtSugar = 1;
-		int amtChocolate = 1;
+		int amtCoffee = 0;
+		int amtMilk = 0;
+		int amtSugar = 0;
+		int amtChocolate = 0;
 
 		boolean result = fixture.addInventory(amtCoffee, amtMilk, amtSugar, amtChocolate);
 
 		// add additional test code here
-		assertEquals(false, result);
+		assertEquals(true, result);
 	}
 
 	/**
@@ -149,15 +167,30 @@ public class CoffeeMakerTest {
 	public void testAddInventory_5()
 		throws Exception {
 		CoffeeMaker fixture = CoffeeMakerFactory.createCoffeeMaker();
-		int amtCoffee = 1;
-		int amtMilk = 1;
-		int amtSugar = 1;
-		int amtChocolate = 1;
+		int amtCoffee = 2;
+		int amtMilk = 2;
+		int amtSugar = 2;
+		int amtChocolate = 2;
 
 		boolean result = fixture.addInventory(amtCoffee, amtMilk, amtSugar, amtChocolate);
 
 		// add additional test code here
-		assertEquals(false, result);
+		assertEquals(true, result);
+	}
+	
+	@Test
+	public void testAddInventory_6()
+		throws Exception {
+		CoffeeMaker fixture = CoffeeMakerFactory.createCoffeeMaker();
+		int amtCoffee = 3;
+		int amtMilk = 2;
+		int amtSugar = -1;
+		int amtChocolate = -1;
+
+		boolean result = fixture.addInventory(amtCoffee, amtMilk, amtSugar, amtChocolate);
+
+		// add additional test code here
+		assertEquals(false,result);
 	}
 
 	/**
@@ -622,16 +655,31 @@ public class CoffeeMakerTest {
 		throws Exception {
 		CoffeeMaker fixture = CoffeeMakerFactory.createCoffeeMaker();
 		Recipe r = RecipeFactory.createRecipe();
+		r.setAmtCoffee(1);
+		r.setAmtMilk(1);
+		r.setAmtSugar(1);
+		r.setAmtChocolate(1);
 		int amtPaid = 1;
 
 		int result = fixture.makeCoffee(r, amtPaid);
-
+		Inventory inve = fixture.checkInventory();
 		// add additional test code here
+		assertEquals(14, inve.getCoffee());
+		assertEquals(14, inve.getMilk());
+		assertEquals(14, inve.getSugar());
+		assertEquals(14, inve.getChocolate());
 		assertEquals(1, result);
 	}
+	
+
 	@Test
 	public void testAddRecipe1() {
 		assertTrue(cm.addRecipe(r1));
+	}
+	
+	@Test
+	public void testAddRecipe2() {
+		assertTrue(cm2.addRecipe(r2));
 	}
 	@Test
 	public void testDeleteRecipe1() {
@@ -669,6 +717,17 @@ public class CoffeeMakerTest {
 		r1.setAmtMilk(1);
 		r1.setAmtSugar(1);
 		r1.setAmtChocolate(0);
+		
+		cm2 = new CoffeeMaker();
+		i2 = cm2.checkInventory();
+
+		r2 = new Recipe();
+		r2.setName("Coffee2");
+		r2.setPrice(30);
+		r2.setAmtCoffee(-1);
+		r2.setAmtMilk(-1);
+		r2.setAmtSugar(-1);
+		r2.setAmtChocolate(1);
 	}
 
 	/**

@@ -25,12 +25,12 @@ public class Recipe {
      * @param amtChocolate int
      */
     public void setAmtChocolate(int amtChocolate) {
-    	if(amtChocolate >= 0) {
+    	if(amtChocolate >=-1) {
     		this.amtChocolate = amtChocolate;
     	}
-    	else {
-    		this.amtChocolate = 0;
-    	}
+//    	else {
+//    		this.amtChocolate = 0;
+//    	}
     }
     /**
      * Method getAmtCoffee.
@@ -44,12 +44,12 @@ public class Recipe {
      * @param amtCoffee int
      */
     public void setAmtCoffee(int amtCoffee) {
-    	if(amtCoffee >= 0) {
+    	if(amtCoffee >= -1) {
     		this.amtCoffee = amtCoffee;
     	}
-    	else {
-    		this.amtCoffee = 0;
-    	}
+//    	else {
+//    		this.amtCoffee = 0;
+//    	}
     }
     /**
      * Method getAmtMilk.
@@ -63,12 +63,12 @@ public class Recipe {
      * @param amtMilk int
      */
     public void setAmtMilk(int amtMilk) {
-    	if(amtMilk >= 0) {
+    	if(amtMilk >= -1) {
     		this.amtMilk = amtMilk;
     	}
-    	else {
-    		this.amtMilk = 0;
-    	}
+//    	else {
+//    		this.amtMilk = 0;
+//    	}
     }
     /**
      * Method getAmtSugar.
@@ -82,12 +82,12 @@ public class Recipe {
      * @param amtSugar int
      */
     public void setAmtSugar(int amtSugar) {
-    	if(amtSugar >= 0) {
+    	if(amtSugar >= -1) {
     		this.amtSugar = amtSugar;
     	}
-    	else {
-    		this.amtSugar = 0;
-    	}
+//    	else {
+//    		this.amtSugar = 0;
+//    	}
     }
     /**
      * Method getName.
@@ -115,12 +115,12 @@ public class Recipe {
      * @param price int
      */
     public void setPrice(int price) {
-    	if(price >= 0) {
+    	if(price >= -1) {
     		this.price = price;
     	}
-    	else {
-    		this.price = 0;
-    	}
+//    	else {
+//    		this.price = 0;
+//    	}
     } 
     /**
      * Method equals.
